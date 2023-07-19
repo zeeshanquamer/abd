@@ -162,6 +162,12 @@ body {
   position: relative;
   z-index: -1;
 }
+.mySlides img{
+  height: 32rem;
+  object-fit: cover;
+  object-position: 0% 0%;
+
+}
 
 .fade {
   animation-name: fade;
