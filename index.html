@@ -18,6 +18,13 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <nav class="nav-header">
@@ -103,7 +110,18 @@
       </div>
     </div>
     <div class="categories-container">
-      <h2>Categories</h2>
+      <div class="category-top">
+        <h2>Categories</h2>
+        <div class="search">
+          <input type="text" name="search" id="search" placeholder="Search" />
+          <i class="fa-solid fa-magnifying-glass" style="color: #373737"></i>
+        </div>
+      </div>
+      <div class="categories">
+        <div class="categories-item">Categories 1</div>
+        <div class="categories-item">Categories 2</div>
+        <div class="categories-item">Categories 3</div>
+      </div>
     </div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
