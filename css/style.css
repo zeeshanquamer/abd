@@ -323,4 +323,7 @@ body {
   .category-top input {
     width: 10rem;
   }
+  .categories {
+    width: 100%;
+  }
 }
