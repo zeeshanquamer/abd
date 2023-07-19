@@ -15,7 +15,6 @@ function openMenu() {
 let slideIndex = 0;
 showSlides();
 
-
 function showSlides() {
   let i;
   let slides = document.getElementsByClassName("mySlides");
@@ -30,5 +29,28 @@ function showSlides() {
 
   slides[slideIndex - 1].style.display = "block";
 
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
+  setTimeout(showSlides, 2000);
 }
+let tl = gsap.timeline({
+  defaults: {
+    duration: 1,
+    stagger: 0.2,
+  },
+});
+tl.fromTo(
+  ".logo",
+  {
+    x: "-100%",
+  },
+  {
+    x: "0%",
+  }
+);
+tl.fromTo(
+  ".menu-links",
+  {
+    y: "-100%",
+  },
+  { y: "0%" },
+  "-=1"
+);
