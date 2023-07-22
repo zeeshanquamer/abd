@@ -31,6 +31,7 @@ function showSlides() {
 
   setTimeout(showSlides, 2000);
 }
+// GSAP Animation
 let tl = gsap.timeline({
   defaults: {
     duration: 1,
@@ -54,3 +55,20 @@ tl.fromTo(
   { y: "0%" },
   "-=1"
 );
+//search fumctionality
+const products = document.querySelectorAll(".categories-item");
+const searchtab = document.querySelector("#search");
+
+function search() {
+  products.forEach((product) => {
+    const searchBox = searchtab.value.toUpperCase();
+
+    const match = product.children[1].innerText;
+    if (match.toUpperCase().indexOf(searchBox) > -1) {
+      product.style.display = "";
+    } else {
+      product.style.display = "none";
+    }
+  });
+}
+searchtab.addEventListener("keyup", search);
