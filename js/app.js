@@ -4,6 +4,10 @@ const line2 = document.querySelector(".line2");
 const navHeader = document.querySelector(".nav-header");
 const links = document.querySelector(".links");
 const navLinks = document.querySelector(".nav-links");
+const categories = document.querySelectorAll(".categories-item");
+const products = document.querySelectorAll(".categories-item");
+const searchtab = document.querySelector("#search");
+
 burger.addEventListener("click", openMenu);
 function openMenu() {
   line1.classList.toggle("active");
@@ -35,6 +39,7 @@ function showSlides() {
 let tl = gsap.timeline({
   defaults: {
     duration: 1,
+    ease: "power2.inOut",
     stagger: 0.2,
   },
 });
@@ -53,11 +58,34 @@ tl.fromTo(
     y: "-100%",
   },
   { y: "0%" },
+
   "-=1"
 );
-//search fumctionality
-const products = document.querySelectorAll(".categories-item");
-const searchtab = document.querySelector("#search");
+//card scroll animations
+categories.forEach((category) => {
+  tl.fromTo(
+    category,
+    {
+      x: "-100%",
+      opacity: 0,
+      scrollTrigger: {
+        trigger: category,
+        start: "bottom 0%",
+        end: "bottom 100%",
+      },
+    },
+    {
+      x: "0%",
+      opacity: 1,
+      scrollTrigger: {
+        trigger: category,
+      },
+    }
+  );
+  ("+=1");
+});
+
+//search functionality
 
 function search() {
   products.forEach((product) => {

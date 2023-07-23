@@ -3,63 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Ribbon</title>
     <style>
-      .mySlides {
-        display: none;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-
-      .slideshow-container {
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+      }
+      .ribbon {
+        height: 300px;
+        width: 300px;
+        border-radius: 20px;
+        box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.3);
         position: relative;
-        z-index: -1;
       }
-      img {
-        object-fit: cover;
-        object-position: 0px 50%;
-        
+      .ribbon span {
+        height: 9.3rem;
+        width: 9.3rem;
+        top: -10px;
+        left: -10px;
+        position: absolute;
+        /* background-color: red; */
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
       }
-
-      .fade {
-        animation-name: fade;
-        animation-duration: 1.5s;
-        position: relative;
+      .ribbon span::before {
+        content: "";
+        height: 2.5rem;
+        width: 150%;
+        background-color: aqua;
+        position: absolute;
+       z-index: 2;
+        transform: rotate(-45deg) translateY(-20px);
+      }
+      .ribbon span::after {
+        content: "";
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        background-color: rgb(17, 179, 179);
+        bottom: 0;
+        left: 0;
+        box-shadow: 140px -140px rgb(17, 179, 179);
       }
     </style>
   </head>
   <body>
-    <div class="slideshow-container">
-      <div class="mySlides fade">
-        <img src="banner1.jpg" style="width: 100%; " />
-      </div>
-
-      <div class="mySlides fade">
-        <img src="banner2.jpg" style="width: 100%;" />
-      </div>
-
-      <div class="mySlides fade">
-        <img src="banner3.jpg" style="width: 100%;" />
-      </div>
+    <div class="ribbon">
+      <span> </span>
     </div>
-    <script>
-      let slideIndex = 0;
-      showSlides();
-
-      function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-
-        slideIndex++;
-        if (slideIndex > slides.length) {
-          slideIndex = 1;
-        }
-
-        slides[slideIndex - 1].style.display = "block";
-
-        setTimeout(showSlides, 2000);
-      }
-    </script>
   </body>
 </html>
