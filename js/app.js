@@ -80,9 +80,9 @@ categories.forEach((category) => {
       scrollTrigger: {
         trigger: category,
       },
-    }
+    },
+    "-=2"
   );
-  ("+=1");
 });
 
 //search functionality
