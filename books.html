@@ -6,41 +6,38 @@
     <title>Books</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
       .desc-text {
-        display: inline-block;
-        width: 180px;
-        overflow: hidden !important;
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
-        max-height: 10rem;
+        font-size: 0.8rem;
+        line-height: 1rem;
       }
       .categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  row-gap: 5rem;
-  column-gap: 3rem;
-  padding: 2rem 0rem;
-  width: 100%;
-  margin: auto;
-  /* height: 100%; */
-  place-items: center;
-}
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        row-gap: 5rem;
+        column-gap: 3rem;
+        padding: 2rem 0rem;
+        width: 100%;
+        margin: auto;
+        /* height: 100%; */
+        place-items: center;
+      }
       .categories-item img {
         object-fit: fill;
       }
-      .categories-item h3 {
+      .categories-item h3,
+      .categories .author {
         padding: 1rem;
-      }
-      .categories-item p {
-        align-self: right;
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     </style>
   </head>
@@ -58,7 +55,9 @@
         </div>
       </div>
       <!-- categories -->
-      <div class="categories"></div>
+      <div class="categories">
+        <h1>Search your Books</h1>
+      </div>
     </div>
     <script src="./js/books.js"></script>
   </body>
