@@ -5,9 +5,10 @@ const input = document.querySelector("#search");
 const categories = document.querySelector(".categories");
 const searchInput = document.querySelector(".search-input");
 const form = document.querySelector(".search-form");
+let random_auth;
 let currentSearch;
-let searchValue = "";
-
+let searchValue = input.defaultValue;
+input.value = input.defaultValue;
 input.addEventListener("change", updateInput);
 function updateInput() {
   searchValue = input.value;
@@ -26,21 +27,28 @@ async function fetchApi(url) {
     },
   });
   const data = await dataFetch.json();
+  console.log(data);
   return data;
 }
 async function pics() {
-  searchValue = "";
-  fetchLink = `https://www.googleapis.com/books/v1/volumes?q=${searchValue}&maxResults=40&key=${auth}`;
+  fetchLink = `https://www.googleapis.com/books/v1/volumes?q=subject:${searchValue}&maxResults=40&key=${auth}`;
   const data = await fetchApi(fetchLink);
   generatePictures(data);
 }
 
 function generatePictures(data) {
   data.items.forEach((item) => {
+    // console.log(item);
     const title = item.volumeInfo.title;
     const author = item.volumeInfo.authors;
+
     const id = item.id;
+    const description = item.volumeInfo.description;
+
+    // console.log(author);
     const thumbnail = `https://books.google.com/books/publisher/content/images/frontcover/${id}?fife=w400-h600&source=gbs_api`;
+    // console.log(thumbnail);
+
     const galleryImg = document.createElement("div");
     galleryImg.classList.add("categories-item");
     galleryImg.innerHTML = `
@@ -62,7 +70,7 @@ function clear() {
 }
 async function searchPhotos(query) {
   clear();
-  fetchLink = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=40&key=${auth}`;
+  fetchLink = `https://www.googleapis.com/books/v1/volumes?q=subject:${query}&maxResults=40&key=${auth}`;
   const data = await fetchApi(fetchLink);
   generatePictures(data);
 }
