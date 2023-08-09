@@ -24,6 +24,7 @@ async function fetchApi(url) {
     method: "GET",
     headers: {
       Accept: "application/json",
+      Authorization: auth,
     },
   });
   const data = await dataFetch.json();
@@ -31,7 +32,7 @@ async function fetchApi(url) {
   return data;
 }
 async function pics() {
-  fetchLink = `https://www.googleapis.com/books/v1/volumes?q=subject:${searchValue}&maxResults=40&key=${auth}`;
+  fetchLink = `https://www.googleapis.com/books/v1/volumes?q=subject:${searchValue}&maxResults=40`;
   const data = await fetchApi(fetchLink);
   generatePictures(data);
 }
@@ -70,7 +71,7 @@ function clear() {
 }
 async function searchPhotos(query) {
   clear();
-  fetchLink = `https://www.googleapis.com/books/v1/volumes?q=subject:${query}&maxResults=40&key=${auth}`;
+  fetchLink = `https://www.googleapis.com/books/v1/volumes?q=subject:${query}&maxResults=40`;
   const data = await fetchApi(fetchLink);
   generatePictures(data);
 }
