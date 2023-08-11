@@ -100,3 +100,36 @@ function search() {
   });
 }
 searchtab.addEventListener("keyup", search);
+
+const button = document.querySelector(".send-msg");
+button.addEventListener("click", sendMessage);
+
+//send message
+async function sendMessage(e) {
+  e.preventDefault();
+  let namee = document.getElementById("fname").value;
+  let emaill = document.getElementById("email").value;
+  let messagee = document.getElementById("message").value;
+  let obj = {
+    name: namee,
+    email: emaill,
+    message: messagee,
+  };
+  try {
+    const response = await fetch("http://localhost:8080", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+
+    const res = await response.json();
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  }
+  document.getElementById("fname").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("message").value = "";
+}
