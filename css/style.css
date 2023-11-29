@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
+body {
 }
 .line1,
 .line2 {
@@ -242,7 +242,8 @@ body {
   transform: scale(1);
 }
 
-.desc a {
+.desc a,
+.purchase {
   background-color: white;
   box-shadow: 3px 3px 8px #666666;
   font-family: Arial;
@@ -255,7 +256,8 @@ body {
   z-index: 20;
   overflow: hidden;
 }
-.desc a::before {
+.desc a::before,
+.purchase::before {
   content: "";
   position: absolute;
   background: rgb(0, 136, 255);
@@ -270,7 +272,8 @@ body {
   transform-origin: left;
   visibility: hidden;
 }
-.desc a:hover::before {
+.desc a:hover::before,
+.purchase:hover::before {
   transform: scaleX(1);
   visibility: visible;
 }

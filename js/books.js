@@ -5,6 +5,20 @@ const input = document.querySelector("#search");
 const categories = document.querySelector(".categories");
 const searchInput = document.querySelector(".search-input");
 const form = document.querySelector(".search-form");
+
+const purchseSuccess = document.querySelector(".purchaseSuccessful");
+
+const purchase = document.querySelector(".purchase");
+const popup = document.querySelector(".buy-popup");
+const cross = document.querySelector(".cross");
+
+let titlee = document.getElementById("book-title");
+let authorr = document.getElementById("author-name");
+let namee = document.getElementById("your-name");
+let numberr = document.getElementById("your-number");
+let addresse = document.getElementById("your-address");
+let emaill = document.getElementById("your-email");
+
 let currentSearch;
 let searchValue = "";
 
@@ -48,14 +62,26 @@ function generatePictures(data) {
     galleryImg.innerHTML = `
     <img src="${thumbnail}" alt="" />
     <h3 class="title">${title}</h3>
-    <p class="author">-${author}</p>
+    <p class="author">${author}</p>
     <div class="desc">
        <span class="desc-text"> ${title}</span>
        <span class="desc-text"> - ${author}</span>
-    <a href="">Buy Now</a>
+    <a href="#" class="buy-now">Buy Now</a>
     </div>
     `;
     categories.appendChild(galleryImg);
+  });
+  const buyNow = document.querySelectorAll(".buy-now");
+  buyNow.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const purchaseBookTitle =
+        e.target.parentElement.parentElement.children[1].innerText;
+      const purchasedBookAuthor =
+        e.target.parentElement.parentElement.children[2].innerHTML;
+      titlee.value = purchaseBookTitle;
+      authorr.value = purchasedBookAuthor;
+      popup.classList.add("active");
+    });
   });
 }
 function clear() {
@@ -68,4 +94,45 @@ async function searchPhotos(query) {
   const data = await fetchApi(fetchLink);
   generatePictures(data);
 }
+
+purchase.addEventListener("click", buyProduct);
+async function buyProduct(e) {
+  e.preventDefault();
+  let obj = {
+    name: namee.value,
+    title: titlee.value,
+    phone: numberr.value,
+    author: authorr.value,
+    address: addresse.value,
+    email: emaill.value,
+  };
+  try {
+    const response = await fetch("http://localhost:8080/books", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+
+    const res = await response.json();
+    console.log("this is response " + res);
+  } catch (error) {
+    console.log(error);
+  }
+  document.getElementById("your-name").value = "";
+  document.getElementById("book-title").value = "";
+  document.getElementById("author-name").value = "";
+  document.getElementById("your-address").value = "";
+  document.getElementById("your-number").value = "";
+  document.getElementById("your-email").value = "";
+  popup.classList.remove("active");
+  purchseSuccess.classList.add("active");
+}
+cross.addEventListener("click", () => {
+  popup.classList.remove("active");
+});
+purchseSuccess.addEventListener("transitionend", () => {
+  purchseSuccess.classList.remove("active");
+});
 pics();

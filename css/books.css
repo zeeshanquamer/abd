@@ -1,35 +1,114 @@
 .desc-text {
-    font-size: 0.8rem;
-    line-height: 1rem;
-  }
-  .categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    row-gap: 5rem;
-    column-gap: 3rem;
-    padding: 2rem 0rem;
-    width: 100%;
-    margin: auto;
-    /* height: 100%; */
-    place-items: center;
-  }
-  .categories-item img {
-    object-fit: fill;
-  }
-  .categories-item h3,
-  .categories .author {
-    padding: 1rem;
-    width: 200px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .search-form button {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.2rem;
-    cursor: pointer;
-  }
-  .categories h1 {
-    position: absolute;
-  }
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  row-gap: 5rem;
+  column-gap: 3rem;
+  padding: 2rem 0rem;
+  width: 100%;
+  margin: auto;
+  place-items: center;
+}
+.categories-item img {
+  object-fit: fill;
+}
+.categories-item h3,
+.categories .author {
+  padding: 1rem;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-form button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.2rem;
+  cursor: pointer;
+}
+.categories h1 {
+  position: absolute;
+}
+.buy-popup {
+  position: fixed;
+  background-color: #bbbbbb;
+  height: 40rem;
+  width: 50rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+  top: 30%;
+}
+.buy-popup.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+  top: 50%;
+}
+.content {
+  position: relative;
+  width: 100%;
+  padding: 1rem 5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.content .info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.info input {
+  width: 80%;
+  height: 2rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+#your-address {
+  resize: none;
+  font-size: 1rem;
+  padding: 0.8rem;
+}
+.cross {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.purchaseSuccessful {
+  width: 50rem;
+  height: 20rem;
+  background-color: #bbbbbb;
+  border-radius: 1rem;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all 1s ease-in-out;
+}
+.purchaseSuccessful.active {
+  top: 50%;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}

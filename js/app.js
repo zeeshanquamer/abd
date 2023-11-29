@@ -107,6 +107,7 @@ button.addEventListener("click", sendMessage);
 //send message
 async function sendMessage(e) {
   e.preventDefault();
+  let res;
   let namee = document.getElementById("fname").value;
   let emaill = document.getElementById("email").value;
   let messagee = document.getElementById("message").value;
@@ -124,11 +125,17 @@ async function sendMessage(e) {
       body: JSON.stringify(obj),
     });
 
-    const res = await response.json();
+    res = await response.json();
     console.log(res);
   } catch (error) {
     console.log(error);
   }
+  if (res.success) {
+    alert("Message sent successfully");
+  } else {
+    alert(res.msg);
+  }
+
   document.getElementById("fname").value = "";
   document.getElementById("email").value = "";
   document.getElementById("message").value = "";
