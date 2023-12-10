@@ -52,6 +52,7 @@ async function pics() {
 }
 
 function generatePictures(data) {
+  categories.innerHTML = "";
   data.items.forEach((item) => {
     const title = item.volumeInfo.title;
     const author = item.volumeInfo.authors;

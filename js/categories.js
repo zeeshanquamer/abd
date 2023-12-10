@@ -51,6 +51,7 @@ async function pics() {
 }
 
 function generatePictures(data) {
+  categories.innerHTML = "";
   data.items.forEach((item) => {
     // console.log(item);
     const title = item.volumeInfo.title;
