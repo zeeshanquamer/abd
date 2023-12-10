@@ -72,7 +72,7 @@ function generatePictures(data) {
     <div class="desc">
        <span class="desc-text"> ${title}</span>
        <span class="desc-text"> - ${author}</span>
-    <a href="" class="buy-now">Buy Now</a>
+    <a href="#" class="buy-now">Buy Now</a>
     </div>
     `;
     categories.appendChild(galleryImg);
