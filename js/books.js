@@ -98,13 +98,14 @@ async function searchPhotos(query) {
 purchase.addEventListener("click", buyProduct);
 async function buyProduct(e) {
   e.preventDefault();
+  let res;
   let obj = {
     name: namee.value,
     title: titlee.value,
+    email: emaill.value,
     phone: numberr.value,
     author: authorr.value,
     address: addresse.value,
-    email: emaill.value,
   };
   try {
     const response = await fetch("https://abd-backend.onrender.com/books", {
@@ -115,8 +116,8 @@ async function buyProduct(e) {
       body: JSON.stringify(obj),
     });
 
-    const res = await response.json();
-    console.log("this is response " + res);
+    res = await response.json();
+    console.log(res);
   } catch (error) {
     console.log(error);
   }
@@ -127,7 +128,14 @@ async function buyProduct(e) {
   document.getElementById("your-number").value = "";
   document.getElementById("your-email").value = "";
   popup.classList.remove("active");
-  purchseSuccess.classList.add("active");
+  if (res.success) {
+    purchseSuccess.children[0].innerText = "Purchase successfully";
+    purchseSuccess.classList.add("active");
+  } else {
+    purchseSuccess.children[0].innerText = res.msg.toUpperCase();
+
+    purchseSuccess.classList.add("active");
+  }
 }
 cross.addEventListener("click", () => {
   popup.classList.remove("active");
