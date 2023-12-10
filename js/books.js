@@ -107,7 +107,7 @@ async function buyProduct(e) {
     email: emaill.value,
   };
   try {
-    const response = await fetch("http://localhost:8080/books", {
+    const response = await fetch("https://abd-backend.onrender.com/books", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

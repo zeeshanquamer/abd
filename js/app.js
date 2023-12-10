@@ -117,7 +117,7 @@ async function sendMessage(e) {
     message: messagee,
   };
   try {
-    const response = await fetch("http://localhost:8080", {
+    const response = await fetch("https://abd-backend.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
